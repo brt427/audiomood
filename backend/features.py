@@ -1,5 +1,6 @@
 import librosa
 import numpy as np
+from .audio_llm import analyze_audio
 
 
 def extract_features(file_path: str) -> dict:
@@ -10,19 +11,25 @@ def extract_features(file_path: str) -> dict:
         file_path: Path to audio file (mp3, wav, etc.)
 
     Returns:
-        Dictionary with tempo, key, and mode
+        Dictionary with tempo, key, mode, energy, and Gemini analysis
     """
     # Load audio file
     y, sr = librosa.load(file_path)
 
-    # Extract features
+    # Extract librosa features
     tempo = extract_tempo(y, sr)
     key_info = extract_key(y, sr)
+    energy = extract_energy(y, sr)
+
+    # Extract Gemini analysis
+    analysis = analyze_audio(file_path)
 
     return {
         "tempo": tempo,
         "key": key_info['key'],
-        "mode": key_info['mode']
+        "mode": key_info['mode'],
+        "energy": energy,
+        "analysis": analysis
     }
 
 
@@ -100,4 +107,29 @@ def extract_key(y, sr):
         'key': best_key,
         'mode': best_mode
     }
+
+
+def extract_energy(y, sr):
+    """
+    Extract energy level using RMS (Root Mean Square).
+
+    Args:
+        y: Audio time series
+        sr: Sample rate
+
+    Returns:
+        float: Energy level from 0.0 (quiet) to 1.0 (loud)
+    """
+    # Calculate RMS energy
+    rms = librosa.feature.rms(y=y)
+
+    # Get mean energy across the entire track
+    energy_mean = float(np.mean(rms))
+
+    # Use a more reasonable normalization based on typical RMS ranges
+    # Most music has RMS between 0.01-0.3
+    # Map 0.0-0.25 to 0.0-1.0
+    energy = min(1.0, energy_mean / 0.25)
+
+    return round(energy, 2)
 

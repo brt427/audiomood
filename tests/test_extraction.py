@@ -37,8 +37,9 @@ def main():
         features = extract_features(audio_file)
 
         print("\nExtracted Features:")
-        print(f"  Tempo: {features['tempo']} BPM")
-        print(f"  Key:   {features['key']} {features['mode']}")
+        print(f"  Tempo:  {features['tempo']} BPM")
+        print(f"  Key:    {features['key']} {features['mode']}")
+        print(f"  Energy: {features['energy']}")
         print("-" * 50)
 
         # Interpret results
@@ -54,6 +55,14 @@ def main():
             print("  - Major key")
         else:
             print("  - Minor key")
+
+        # Display Gemini analysis
+        if "analysis" in features:
+            print("\n" + "=" * 50)
+            print("GEMINI ANALYSIS")
+            print("=" * 50)
+            print(features['analysis'])
+            print("=" * 50)
 
     except Exception as e:
         print(f"\nError during extraction: {e}")
