@@ -109,17 +109,14 @@ export function AnalysisForm() {
                 analyzing song
               </>
             ) : (
-              <>
-                <span className="mr-2">✨</span>
-                analyze song
-              </>
+              "analyze song"
             )}
           </Button>
         </div>
       </Card>
 
       <p className="text-center text-sm text-muted-foreground">
-        transform your songs into emotional insights and creative prompts
+        transform any song into a creative prompt
       </p>
     </div>
   )
