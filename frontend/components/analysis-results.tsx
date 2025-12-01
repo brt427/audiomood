@@ -72,34 +72,6 @@ export function AnalysisResults({ analysis, onReset }: AnalysisResultsProps) {
         </Card>
       </div>
 
-      <div className="mb-4 mt-8 text-center">
-        <h2 className="text-xs font-medium uppercase tracking-widest text-muted-foreground">analysis</h2>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Card className="border border-border bg-card p-6 shadow-none">
-          <div className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">genre</div>
-          <div className="text-base leading-relaxed text-foreground">{analysis.analysis.genre}</div>
-        </Card>
-
-        <Card className="border border-border bg-card p-6 shadow-none">
-          <div className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">vocal style</div>
-          <div className="text-base leading-relaxed text-foreground">{analysis.analysis.vocal_style}</div>
-        </Card>
-
-        <Card className="border border-border bg-card p-6 shadow-none">
-          <div className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">
-            instrumentation
-          </div>
-          <div className="text-base leading-relaxed text-foreground">{analysis.analysis.instrumentation}</div>
-        </Card>
-
-        <Card className="border border-border bg-card p-6 shadow-none">
-          <div className="mb-2 text-xs font-medium uppercase tracking-widest text-muted-foreground">production</div>
-          <div className="text-base leading-relaxed text-foreground">{analysis.analysis.production}</div>
-        </Card>
-      </div>
-
       {/* Generated Prompt */}
       <Card className="mt-8 border border-border bg-card p-8 shadow-none">
         <div className="mb-4 flex items-center justify-between">
