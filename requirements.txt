@@ -106,3 +106,4 @@ uvicorn==0.38.0
 xxhash==3.6.0
 yarl==1.22.0
 python-multipart==0.0.20
+slowapi==0.1.9
