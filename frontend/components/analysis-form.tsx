@@ -149,10 +149,13 @@ export function AnalysisForm() {
             size="lg"
           >
             {isAnalyzing ? (
-              <>
-                <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                analyzing song
-              </>
+              <div className="flex flex-col items-center gap-1">
+                <div className="flex items-center">
+                  <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                  analyzing song
+                </div>
+                <span className="text-xs opacity-80">please wait 10-15 seconds</span>
+              </div>
             ) : (
               "analyze song"
             )}
