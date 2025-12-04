@@ -154,7 +154,7 @@ export function AnalysisForm() {
                   <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                   analyzing song
                 </div>
-                <span className="text-xs opacity-80">please wait 10-15 seconds</span>
+                <span className="text-xs opacity-80">estimated wait time 20-40s</span>
               </div>
             ) : (
               "analyze song"
